@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  mongo:
+    container_name: ms_mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - "./mongo/db:/data/db"
+  user:
+    container_name: ms_user
+    build: ./user
+    command: nodemon ./bin/www
+    volumes:
+      - ./user:/app/user
+    ports:
+      - "1331:3000"
+    depends_on:
+      - mongo
+  nginx:
+    container_name: ms_nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - user
