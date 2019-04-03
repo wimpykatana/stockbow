@@ -8,6 +8,14 @@ services:
       - "27017:27017"
     volumes:
       - "./mongo/db:/data/db"
+  web:
+    container_name: ms_web
+    build: ./web
+    command: node web.js
+    volumes:
+      - ./web:/app/web
+    ports:
+      - "1331:1331"
   user:
     container_name: ms_user
     build: ./user
@@ -15,7 +23,7 @@ services:
     volumes:
       - ./user:/app/user
     ports:
-      - "1331:3000"
+      - "1337:1337"
     depends_on:
       - mongo
   nginx:

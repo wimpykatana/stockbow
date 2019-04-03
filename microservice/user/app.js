@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/api/v1/user", async (req, res) => {
 
-  return res.status(200).json({msg: "hello "})
+  return res.status(200).json({msg: "hello wimpy "})
 
 });
 
