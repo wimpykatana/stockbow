@@ -61,5 +61,9 @@ typings/
 # next.js build output
 .next
 
-*.DS_Store
-mongo/db/**/**
+.DS_Store
+# exclude everything
+mongo/db/*
+
+# exception to the rule
+!mongo/db/.gitkeep 
