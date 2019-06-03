@@ -19,11 +19,11 @@ services:
   webapp:
     container_name: ms_webapp
     build: ./webapp
-    command: npm start
+    command: npm run deploy
     volumes:
       - ./webapp:/app/webapp
     ports:
-      - "3000:3000"
+      - "5000:5000"
   user:
     container_name: ms_user
     build: ./user
