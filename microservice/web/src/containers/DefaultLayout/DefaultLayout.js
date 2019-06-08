@@ -11,7 +11,7 @@ import {
   AppSidebarFooter,
   AppSidebarForm,
   AppSidebarHeader,
-  AppSidebarMinimizer,
+  // AppSidebarMinimizer,
   AppBreadcrumb2 as AppBreadcrumb,
   AppSidebarNav2 as AppSidebarNav,
 } from '@coreui/react';
@@ -49,7 +49,6 @@ class DefaultLayout extends Component {
             <AppSidebarNav navConfig={navigation} {...this.props} router={router}/>
             </Suspense>
             <AppSidebarFooter />
-            <AppSidebarMinimizer />
           </AppSidebar>
           <main className="main">
             <AppBreadcrumb appRoutes={routes} router={router}/>

@@ -4,13 +4,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var dbConfig = require('./config/db');
 
 // var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
+var usersRouter = require('./modules/index');
 
 var app = express();
 
 dotenv.config();
+
+/** DATABASE Connect */
+dbConfig.con();
 
 
 // view engine setup
@@ -24,11 +28,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get("/api/v1/user", async (req, res) => {
-
-  return res.status(200).json({msg: "hello wimpy "})
-
-});
+app.use('/api/v1/', [
+  usersRouter
+]);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,4 +49,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-console.log(`users microservice up and running at port ${process.env.PORT}`);
+console.log(`users microservice up and running at port: ${process.env.PORT}`);

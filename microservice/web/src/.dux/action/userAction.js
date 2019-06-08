@@ -1,5 +1,5 @@
-import config from '../../config/config.json';
-import axios from 'axios';
+// import config from '../../config/config.json';
+// import axios from 'axios';
 
 export function onlogin(username, pass){
     return function(dispatch){

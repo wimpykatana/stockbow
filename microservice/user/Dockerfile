@@ -11,7 +11,7 @@ RUN npm install nodemon -g
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-COPY package.json ./
+COPY package.json ./app/user/package.json
 
 RUN npm install
 
@@ -20,5 +20,5 @@ RUN npm install
 
 EXPOSE 1337
 
-CMD npm run dev
+CMD ["npm", "run", "dev"]
 # CMD npm start
