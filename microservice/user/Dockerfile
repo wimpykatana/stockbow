@@ -7,7 +7,7 @@ COPY . /app/user
 WORKDIR /app/user
 
 # install nodemon for dev
-# RUN npm install nodemon -g
+RUN npm install nodemon -g
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -21,5 +21,5 @@ RUN npm install
 
 EXPOSE 1337
 
-# CMD ["npm", "run", "dev"]
-CMD npm start
+CMD ["npm", "run", "dev"]
+# CMD npm start
