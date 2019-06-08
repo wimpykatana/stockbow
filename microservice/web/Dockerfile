@@ -15,13 +15,13 @@ COPY package.json ./
 RUN npm install --silent
 
 # comment it if in dev mode
-# RUN npm run build
+RUN npm run build
 
 
 # If you are building your code for production
-# RUN npm ci --only=production
+RUN npm ci --only=production
 
 EXPOSE 5000
 
-# CMD npm run deploy
-CMD npm start
+CMD npm run deploy
+# CMD npm start
