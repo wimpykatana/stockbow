@@ -19,8 +19,8 @@ services:
   web:
     container_name: ms_web
     build: ./web
-    # command: npm run deploy
-    command: npm start
+    command: npm run deploy
+    # command: npm start
     volumes:
       - ./web:/app/web
     ports:
