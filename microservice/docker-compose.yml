@@ -28,7 +28,7 @@ services:
   user:
     container_name: ms_user
     build: ./user
-    command: nodemon ./bin/www
+    command: node ./bin/www
     volumes:
       - ./user:/app/user
     ports:
