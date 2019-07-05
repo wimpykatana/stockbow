@@ -58,6 +58,9 @@ typings/
 *.env
 **/**/.env
 
+#webstorm idea
+*.idea/
+
 # next.js build output
 .next
 

@@ -23,5 +23,5 @@ RUN npm ci --only=production
 
 EXPOSE 5000
 
-CMD npm run deploy
-# CMD npm start
+#CMD npm run deploy
+CMD npm start
