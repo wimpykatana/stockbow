@@ -18,10 +18,6 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    newsletter:{
-        type: Boolean,
-        default: false
-    },
     signUpDate: {
         type: Date,
         default: Date.now()
@@ -63,6 +59,15 @@ const UserSchema = new mongoose.Schema({
         //date of birth (tanggal lahir)
         type: Date,
         default: ''
+    },
+    isAdmin:{
+        type: Number,
+        default: 0
+    },
+    startSubs:{
+        type: Date,
+        default: ''
     }
 });
+
 module.exports = mongoose.model('User', UserSchema);

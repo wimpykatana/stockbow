@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Register from './';
+import { MemoryRouter } from 'react-router-dom';
+import Login from './';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Login />, div);
+  ReactDOM.render(<MemoryRouter><Login/></MemoryRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

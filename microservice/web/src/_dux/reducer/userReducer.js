@@ -5,7 +5,7 @@ export default function reducer(state={
     error: null,
     token: null,
 }, action) {
-    switch(action.type){
+    switch (action.type){
         case "START_LOGIN" : {
             return {...state, fetching: true}
         }
@@ -15,6 +15,7 @@ export default function reducer(state={
         case "LOGIN_REJECT":{
             return {...state, fetching: false, fetched: true, data: action.payload, error: true, isLogin: false}
         }
+
         case "START_LOGOUT" : {
             return {...state, fetching: true}
         }

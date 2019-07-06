@@ -21,5 +21,5 @@ RUN npm install
 
 EXPOSE 1337
 
-CMD ["npm", "run", "dev"]
 # CMD npm start
+CMD npm run dev

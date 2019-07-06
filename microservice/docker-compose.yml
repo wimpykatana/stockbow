@@ -4,6 +4,7 @@ services:
   mongo:
     container_name: ms_mongo
     image: mongo
+    command: mongod --port 27017 --bind_ip_all
     ports:
       - "27017:27017"
     volumes:
@@ -21,13 +22,19 @@ services:
   user:
     container_name: ms_user
     build: ./user
-    command: nodemon ./bin/www
+#    command: nodemon ./bin/www
+    command: >
+      /bin/bash -c "
+        sleep 5;
+        nodemon ./bin/www;
+      "
     volumes:
       - ./user:/app/user
     ports:
       - "1337:1337"
     depends_on:
       - mongo
+
   nginx:
     container_name: ms_nginx
     image: nginx:latest
