@@ -39,8 +39,6 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
   )} />
 );
 
-console.log("im from merge cherypick with master");
-
 class App extends Component {
 
   render() {
