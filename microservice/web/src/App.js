@@ -19,7 +19,7 @@ const Page500 = React.lazy(() => import('./views/Pages/Page500'));
 const isAuthenticated = () => {
   //write your condition here
   return false;
-}
+};
 
 
 const UnauthenticatedRoute = ({ component: Component, ...rest }) => (
