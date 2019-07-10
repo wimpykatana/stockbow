@@ -39,6 +39,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
   )} />
 );
 
+console.log("im from master");
 
 class App extends Component {
 
