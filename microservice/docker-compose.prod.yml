@@ -25,7 +25,15 @@ services:
       - mongo
   web:
     container_name: ms_web
-    build: ./web
+    command: >
+      /bin/bash -c "
+      npm run build;
+      npm run deploy;
+      "
+    volumes:
+      - ./web:/app/web
+    environment:
+      - NODE_ENV=production
     ports:
       - "5000:5000"
     depends_on:
