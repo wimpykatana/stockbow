@@ -6,25 +6,25 @@ export default function reducer(state={
     token: null,
 }, action) {
     switch (action.type){
-        case "START_LOGIN" : {
+        case "LOGIN_BEGIN" : {
             return {...state, fetching: true}
         }
-        case "LOGIN_SUCCES":{
+        case "LOGIN_SUCCESS":{
             return {...state, fetching: false, fetched: true, data: action.payload, isLogin: true, error: false}
         }
         case "LOGIN_REJECT":{
             return {...state, fetching: false, fetched: true, data: action.payload, error: true, isLogin: false}
         }
 
-        case "START_LOGOUT" : {
-            return {...state, fetching: true}
-        }
-        case "LOGOUT_SUCCES":{
-            return {...state, fetching: false, fetched: true, data: action.payload, error: false}
-        }
-        case "LOGOUT_REJECT":{
-            return {...state, fetching: false, fetched: true, data: action.payload, error: true}
-        }
+        // case "START_LOGOUT" : {
+        //     return {...state, fetching: true}
+        // }
+        // case "LOGOUT_SUCCES":{
+        //     return {...state, fetching: false, fetched: true, data: action.payload, error: false}
+        // }
+        // case "LOGOUT_REJECT":{
+        //     return {...state, fetching: false, fetched: true, data: , error: true}
+        // }
     }
     
     return state;

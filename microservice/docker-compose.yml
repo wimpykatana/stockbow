@@ -9,6 +9,8 @@ services:
       - "27017:27017"
     volumes:
       - "./mongo/db:/data/db"
+    networks:
+      - invesgramnet
   user:
     container_name: ms_user
     build: ./user
@@ -23,6 +25,8 @@ services:
       - "1337:1337"
     depends_on:
       - mongo
+    networks:
+      - invesgramnet
   web:
     container_name: ms_web
     build: ./web
@@ -30,6 +34,8 @@ services:
       - "5000:5000"
     depends_on:
       - user
+    networks:
+      - invesgramnet
   nginx:
     container_name: ms_nginx
     image: nginx:latest
@@ -40,3 +46,7 @@ services:
     depends_on:
       - user
       - web
+    networks:
+      - invesgramnet
+networks:
+  invesgramnet:

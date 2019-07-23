@@ -1,4 +1,5 @@
 const User = require('./model');
+const JWT = require('./jwt');
 
 const getAllUser = async (req,res,nex) => {
     try{
@@ -7,45 +8,81 @@ const getAllUser = async (req,res,nex) => {
     }catch(err){
         return res.status(500).json({error:true, message:err.message});
     }
-}
+};
 
-const registerUser = async (req,res,next) => {
+const BeginLogin = async (req,res) => {
     try{
-        const { fullname } = req.body;
+        let { fullname } = req.body;
         let { email } = req.body;
+        let { token } = req.body;
+        let { provider_pic } = req.body;
+        let { provider_id } = req.body;
+        let { provider } = req.body;
 
-        User.find({
-            email: email
-        },(err, previousUsers)=>{
-            if(err){
 
-                return res.status(500).json({error:true, message:err.message});
 
-            }else if(previousUsers.length > 0){
+        let user = await User.findOne({email: email});
 
-                return res.status(200).json({error:true, message: 'email already exist.'})
+        if(!user) {
+            await User.create({
+                email: email,
+                fullname: fullname,
+                token: token,
+                user_pic: provider_pic,
+                provider_id: provider_id,
+                provider: provider,
+                lastLoginDate: Date.now()
+            })
+            .then( async () => {
+                const login = await User.findOne({email: email, isDeleted:false });
 
-            }
+                let obj = {
+                    _id: login._id,
+                    token: login.token
+                };
 
-            const newUser = new User();
-            newUser.email = email;
-            newUser.fullname = fullname;
-
-            newUser.save((err,user)=>{
-                if(err){
-                    return res.status(500).json({error:true, message:err.message});
+                const token = JWT.sign(obj);
+                return res.status(200).json({error:false, isLogin:true, message: 'Login Success', token: token})
+            })
+            .catch((err)=>{
+                return res.status(500).json({error:true, message: err.message});
+            })
+        }
+        if(user){
+            await User.findOneAndUpdate({email:email},{
+                $set:{
+                    email: email,
+                    fullname: fullname,
+                    token: token,
+                    user_pic: provider_pic,
+                    provider_id: provider_id,
+                    provider: provider,
+                    lastLoginDate: Date.now()
                 }
+            })
+            .then(async () => {
+                const login = await User.findOne({email: email, isDeleted:false });
 
-                return res.status(200).json({error: false, fullname: user.fullname, message: 'sign up success'});
+                let obj = {
+                    _id: login._id,
+                    token: login.token
+                };
+
+                const token = JWT.sign(obj);
+                return res.status(200).json({error:false, isLogin:true, message: 'Login Success', token: token})
+            })
+            .catch((err)=>{
+                return res.status(500).json({error:true, message: err.message});
             })
 
-        })
-
+        }
 
     }catch(err){
         return res.status(500).json({error:true, message:err.message});
     }
-}
+};
 
 exports.getAllUser = getAllUser;
-exports.registerUser = registerUser;
+exports.BeginLogin = BeginLogin;
+
+

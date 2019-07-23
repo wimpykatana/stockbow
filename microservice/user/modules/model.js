@@ -22,6 +22,14 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    lastLoginDate:{
+        type: Date,
+        default: ''
+    },
+    LogoutDate:{
+        type: Date,
+        default: ''
+    },
     headline:{
         // field buat jabatan / posisi
         type: String,
@@ -66,6 +74,10 @@ const UserSchema = new mongoose.Schema({
     },
     startSubs:{
         type: Date,
+        default: ''
+    },
+    phoneNumber:{
+        type: String,
         default: ''
     }
 });
