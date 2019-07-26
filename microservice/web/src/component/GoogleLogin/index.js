@@ -3,7 +3,7 @@ import GoogleLogin from 'react-google-login';
 import {Button} from "reactstrap";
 import { connect } from "react-redux";
 import { onLogin } from '../../_dux/action/userAction';
-import { setInStorage, getFromStorage } from  '../../_libs/storage';
+import { setInStorage } from  '../../_libs/storage';
 
 class GoLogin extends React.Component{
 

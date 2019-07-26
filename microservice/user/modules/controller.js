@@ -40,14 +40,14 @@ const BeginLogin = async (req,res) => {
                 };
 
                 const token = JWT.sign(obj);
-                return res.status(200).json({error:false, isLogin:true, token: token, idUser:login._id})
+                return res.status(200).json({error:false, isLogin:true, token: token })
             })
             .catch((err)=>{
                 return res.status(500).json({error:true, message: err.message});
             })
         }
         if(user){
-            await User.findOneAndUpdate({email:email},{
+            await User.findOneAndUpdate({email:email, isDeleted:false },{
                 $set:{
                     email: email,
                     fullname: fullname,
@@ -67,15 +67,16 @@ const BeginLogin = async (req,res) => {
                 };
 
                 const token = JWT.sign(obj);
-                return res.status(200).json({error:false, isLogin:true, token: token, idUser:login._id})
+                return res.status(200).json({error:false, isLogin:true, token: token })
             })
             .catch((err)=>{
-                return res.status(500).json({error:true, message: err.message});
+                return res.status(500).json({error:true, message: err.message, token:"DELETED"});
             })
 
         }
 
     }catch(err){
+
         return res.status(500).json({error:true, message:err.message});
     }
 };
