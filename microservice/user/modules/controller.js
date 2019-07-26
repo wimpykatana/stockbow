@@ -1,7 +1,7 @@
 const User = require('./model');
 const JWT = require('./jwt');
 
-const getAllUser = async (req,res,nex) => {
+const getAllUser = async (req,res) => {
     try{
         let result = await User.find({});
         return res.status(200).json({error:false, users: result})
@@ -18,8 +18,6 @@ const BeginLogin = async (req,res) => {
         let { provider_pic } = req.body;
         let { provider_id } = req.body;
         let { provider } = req.body;
-
-
 
         let user = await User.findOne({email: email});
 
@@ -42,7 +40,7 @@ const BeginLogin = async (req,res) => {
                 };
 
                 const token = JWT.sign(obj);
-                return res.status(200).json({error:false, isLogin:true, message: 'Login Success', token: token})
+                return res.status(200).json({error:false, isLogin:true, token: token, idUser:login._id})
             })
             .catch((err)=>{
                 return res.status(500).json({error:true, message: err.message});
@@ -69,7 +67,7 @@ const BeginLogin = async (req,res) => {
                 };
 
                 const token = JWT.sign(obj);
-                return res.status(200).json({error:false, isLogin:true, message: 'Login Success', token: token})
+                return res.status(200).json({error:false, isLogin:true, token: token, idUser:login._id})
             })
             .catch((err)=>{
                 return res.status(500).json({error:true, message: err.message});

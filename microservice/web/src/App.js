@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './_dux/store';
+import { getFromStorage } from  './_libs/storage';
 // import { renderRoutes } from 'react-router-config';
 import './App.scss';
 
@@ -18,8 +19,17 @@ const Page500 = React.lazy(() => import('./views/Pages/Page500'));
 
 const isAuthenticated = () => {
   //write your condition here
-  return false;
+  let user = getFromStorage("USER");
+
+  if(user){
+    return true;
+  }else{
+    return false;
+  }
+
 };
+
+
 
 
 const UnauthenticatedRoute = ({ component: Component, ...rest }) => (

@@ -3,31 +3,29 @@ import GoogleLogin from 'react-google-login';
 import {Button} from "reactstrap";
 import { connect } from "react-redux";
 import { onLogin } from '../../_dux/action/userAction';
+import { setInStorage, getFromStorage } from  '../../_libs/storage';
 
 class GoLogin extends React.Component{
 
   constructor(props){
     super(props);
     this.state = {
-
+      user : null,
     }
-
     this.responseGoogle = this.responseGoogle.bind(this);
-
   }
 
   componentWillReceiveProps(){
 
+    if(this.props.user.data){
+
+      setInStorage("USER", this.props.user.data);
+      window.location.reload();
+    }
+
   }
-
-  componentDidUpdate(){
-
-  }
-
 
   responseGoogle(response){
-
-
 
     if(response){
 
@@ -64,6 +62,7 @@ class GoLogin extends React.Component{
 
 const mapStateToProps = state => ({
   user: state.user,
+  // token: state.user.data.token
 });
 
 export default connect(mapStateToProps)(GoLogin);
