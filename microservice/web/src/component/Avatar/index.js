@@ -5,26 +5,41 @@ import {connect} from "react-redux";
 import {DropdownItem, DropdownMenu, DropdownToggle, Nav} from "reactstrap";
 import {AppHeaderDropdown} from "@coreui/react";
 import { delStorage,getFromStorage } from "../../_libs/storage";
+import { getUserDetail } from "../../_dux/action/userAction";
 
+
+let userpic;
 
 class Avatar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       userToken: null,
+      userId: null,
+      avatarPic: null
     }
     this.onLogout = this.onLogout.bind(this);
+    this.init = this.init.bind(this);
   }
 
   componentWillMount() {
     let user = getFromStorage("USER");
-    // console.log(user);
     if(user){
       this.setState({
-        userToken: user.token
+        userToken: user.token,
+        userId: user.id
       })
     }
+  }
 
+  componentDidMount() {
+    this.props.dispatch(getUserDetail(this.state.userId, this.state.userToken));
+  }
+
+  init() {
+    if (this.props.user.data) {
+      userpic = <img src={this.props.user.data.user_pic ? this.props.user.data.user_pic : '../../assets/img/avatars/is.png'} className="img-avatar" alt={this.props.user.data.email}/>
+    }
   }
 
   onLogout(){
@@ -33,12 +48,15 @@ class Avatar extends React.Component {
   }
 
   render() {
-    console.log(this.state.userToken);
+    // console.log("token ",this.state.userToken);
+    // console.log("user ",this.state.userId);
+
+    this.init();
     return(
       <Nav className="ml-auto" navbar>
         <AppHeaderDropdown direction="down">
           <DropdownToggle nav>
-            <img src={'../../assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
+            {userpic}
           </DropdownToggle>
           <DropdownMenu right style={{ right: 'auto' }}>
             <DropdownItem header tag="div" className="text-center"><strong>Settings</strong></DropdownItem>

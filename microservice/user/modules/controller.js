@@ -40,7 +40,7 @@ const BeginLogin = async (req,res) => {
                 };
 
                 const token = JWT.sign(obj);
-                return res.status(200).json({error:false, isLogin:true, token: token })
+                return res.status(200).json({error:false, isLogin:true, token: token, id: login._id })
             })
             .catch((err)=>{
                 return res.status(500).json({error:true, message: err.message});
@@ -67,7 +67,7 @@ const BeginLogin = async (req,res) => {
                 };
 
                 const token = JWT.sign(obj);
-                return res.status(200).json({error:false, isLogin:true, token: token })
+                return res.status(200).json({error:false, isLogin:true, token: token, id: login._id })
             })
             .catch((err)=>{
                 return res.status(500).json({error:true, message: err.message, token:"DELETED"});
@@ -81,7 +81,19 @@ const BeginLogin = async (req,res) => {
     }
 };
 
+const getUser = async (req,res) =>{
+    try {
+        const id = String(req.params.id);
+        let user = await User.findById(id,{ "token":0 });
+        return res.status(200).json({error:false, message: user});
+
+    }catch (err) {
+        return res.status(500).json({error:true, message:err.message});
+    }
+}
+
 exports.getAllUser = getAllUser;
+exports.getUser = getUser;
 exports.BeginLogin = BeginLogin;
 
 

@@ -27,6 +27,22 @@ export  function onLogin(name,email,token,provider_pic,provider_id,provider){
     }
 }
 
+export function getUserDetail(id , token) {
+  return async function (dispatch) {
+    dispatch({type: "GET_USER_DETAIL_BEGIN"});
+
+    await axios.get(config.api+"/user/"+id,{
+      headers: {"Authorization" : `Bearer ${token}`}
+    })
+      .then((res)=>{
+        if(res){
+          dispatch({type: "GET_USER_DETAIL_SUCCESS", payload: res.data.message});
+        }
+      })
+  }
+
+}
+
 export function onLogout(token) {
     return function(dispatch) {
         dispatch({type: "START_LOGOUT"});

@@ -14,18 +14,18 @@ class Login extends Component {
                 <CardBody className="p-4">
                   <div className="text-center">
                     <h1>invesgram</h1>
-                    <p className="text-muted">Login with your google account or facebook account</p>
+                    <p className="text-muted">Login with your google account</p>
                   </div>
                 </CardBody>
                 <CardFooter className="p-4">
                   <Row>
 
-                    <Col xs="12" sm="6">
+                    <Col xs="12" sm="12">
                       <GoLogin />
                     </Col>
-                    <Col xs="12" sm="6">
-                      <Button className="btn-facebook mb-1" block><span>facebook</span></Button>
-                    </Col>
+                    {/*<Col xs="12" sm="6">*/}
+                    {/*  <Button className="btn-facebook mb-1" block><span>facebook</span></Button>*/}
+                    {/*</Col>*/}
 
                   </Row>
                 </CardFooter>

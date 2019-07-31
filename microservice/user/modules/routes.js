@@ -1,10 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const JWT = require('./jwt');
 
 const controller = require('./controller');
 
-/* GET users listing. */
-router.get('/users', controller.getAllUser);
+
 router.post('/user', controller.BeginLogin);
+router.get('/user/:id', JWT.verify, controller.getUser);
 
 module.exports = router;
