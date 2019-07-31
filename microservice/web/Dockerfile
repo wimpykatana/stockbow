@@ -12,9 +12,6 @@ WORKDIR /app/web
 # where available (npm@5+)
 COPY package*.json ./
 
-# install nodemon for dev
-RUN npm install node-sass -g
-
 RUN if [ "$NODE_ENV" = "development" ]; \
 	then npm install;  \
 	else npm install --only=production; \
