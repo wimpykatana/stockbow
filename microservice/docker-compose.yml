@@ -5,6 +5,9 @@ services:
     container_name: ms_mongo
     image: mongo
     command: mongod --port 27017 --bind_ip_all --auth
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: xxxxx
+      MONGO_INITDB_ROOT_PASSWORD: xxxxx
     ports:
       - "27017:27017"
     volumes:
