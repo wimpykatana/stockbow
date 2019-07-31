@@ -10,7 +10,7 @@ const getAllUser = async (req,res) => {
     }
 };
 
-const BeginLogin = async (req,res) => {
+const beginLogin = async (req,res) => {
     try{
         let { fullname } = req.body;
         let { email } = req.body;
@@ -94,6 +94,6 @@ const getUser = async (req,res) =>{
 
 exports.getAllUser = getAllUser;
 exports.getUser = getUser;
-exports.BeginLogin = BeginLogin;
+exports.beginLogin = beginLogin;
 
 
