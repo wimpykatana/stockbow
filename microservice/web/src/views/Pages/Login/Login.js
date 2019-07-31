@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
+import { Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
 import GoLogin from '../../../component/GoogleLogin';
 
 

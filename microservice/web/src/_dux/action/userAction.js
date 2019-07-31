@@ -39,6 +39,10 @@ export function getUserDetail(id , token) {
           dispatch({type: "GET_USER_DETAIL_SUCCESS", payload: res.data.message});
         }
       })
+      .catch((err)=>{
+          dispatch({type: "GET_USER_DETAIL_REJECT", payload: err.response.data})
+      })
+    dispatch({type: "GET_USER_DETAIL_FINISH"})
   }
 
 }
