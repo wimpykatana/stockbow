@@ -12,16 +12,19 @@ WORKDIR /app/web
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN if [ "$NODE_ENV" = "development" ];
-	then npm install;
-	else npm install --only=production;
+RUN if [ "$NODE_ENV" = "development" ]; \
+	then npm install;  \
+	else npm install --only=production; \
+	fi
 
-CMD if [ "$NODE_ENV" = "development" ];
-	then npm start;
-	else npm run build;
+CMD if [ "$NODE_ENV" = "development" ]; \
+	then npm start;  \
+	else npm run build; \
+	fi
 
-CMD if [ "$NODE_ENV" = "production" ];
-  then npm run deploy;
+CMD if [ "$NODE_ENV" = "production" ]; \
+  then npm run deploy; \
+  fi
 # comment it if in dev mode
 #RUN npm run build
 
