@@ -26,7 +26,6 @@ services:
     container_name: ms_web
     command: >
       /bin/bash -c "
-      npm run build;
       npm run deploy;
       "
     volumes:
