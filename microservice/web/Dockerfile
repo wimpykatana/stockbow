@@ -14,8 +14,10 @@ COPY package*.json ./
 
 RUN if [ "$NODE_ENV" = "development" ]; \
 	then npm install;  \
-	else npm install --only=production; \
+	else npm ci --only=production; \
 	fi
+
+
 
 CMD if [ "$NODE_ENV" = "development" ]; \
 	then npm start;  \
