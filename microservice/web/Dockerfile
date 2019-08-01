@@ -14,18 +14,18 @@ COPY package*.json ./
 
 CMD npm install
 
-RUN if [ "$NODE_ENV" = "production" ]; \
+CMD if [ "$NODE_ENV" = "production" ]; \
   then npm ci --only=production; \
   fi
 
 
-RUN if [ "$NODE_ENV" = "development" ]; \
+CMD if [ "$NODE_ENV" = "development" ]; \
 	then npm start;  \
 	else npm run build; \
 	fi
 
 
-RUN if [ "$NODE_ENV" = "production" ]; \
+CMD if [ "$NODE_ENV" = "production" ]; \
   then npm run deploy; \
   fi
 # comment it if in dev mode
