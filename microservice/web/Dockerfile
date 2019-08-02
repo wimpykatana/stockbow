@@ -12,11 +12,9 @@ WORKDIR /app/web
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --silent
 
-RUN if [ "$NODE_ENV" = "production" ]; \
-  then npm ci --only=production; \
-  fi
+
 
 
 RUN if [ "$NODE_ENV" = "development" ]; \
@@ -24,15 +22,20 @@ RUN if [ "$NODE_ENV" = "development" ]; \
 	else npm run build; \
 	fi
 
+RUN if [ "$NODE_ENV" = "production" ]; \
+  then npm ci --only=production; \
+  fi
 
 RUN if [ "$NODE_ENV" = "production" ]; \
   then npm run deploy; \
   fi
+
 # comment it if in dev mode
 #RUN npm run build
 
 # If you are building your code for production
 #RUN npm ci --only=production
+
 
 EXPOSE 5000
 
