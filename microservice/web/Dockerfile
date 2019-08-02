@@ -12,10 +12,7 @@ WORKDIR /app/web
 # where available (npm@5+)
 COPY package.json ./
 
-RUN npm install --silent
-
-
-
+RUN npm install --silent --loglevel verbose
 
 RUN if [ "$NODE_ENV" = "development" ]; \
 	then npm start;  \
