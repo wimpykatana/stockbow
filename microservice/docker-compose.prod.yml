@@ -11,7 +11,7 @@ services:
   user:
     container_name: ms_user
     build: ./user
-    link:
+    links:
       - mongo:mongo
     volumes:
       - ./user:/app/user

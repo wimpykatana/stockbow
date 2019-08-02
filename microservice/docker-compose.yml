@@ -15,7 +15,7 @@ services:
     container_name: ms_user
     build: ./user
     command: nodemon ./bin/www;
-    link:
+    links:
       - mongo:mongo
     volumes:
       - ./user:/app/user
