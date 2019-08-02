@@ -2,8 +2,8 @@ import React from 'react';
 // import store from './_dux/store';
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
-import {DropdownItem, DropdownMenu, DropdownToggle, Nav} from "reactstrap";
-import {AppHeaderDropdown} from "@coreui/react";
+import {DropdownItem, DropdownMenu, DropdownToggle, Nav,UncontrolledDropdown} from "reactstrap";
+// import {UncontrolledDropdown} from "@coreui/react";
 import { delStorage,getFromStorage } from "../../_libs/storage";
 import { getUserDetail } from "../../_dux/action/userAction";
 
@@ -38,7 +38,8 @@ class Avatar extends React.Component {
 
   init() {
     if (this.props.user.data) {
-      userpic = <img src={this.props.user.data.user_pic ? this.props.user.data.user_pic : '../../assets/img/avatars/is.png'} className="img-avatar" alt={this.props.user.data.email}/>
+      userpic = <img width={'45px'} height={'45px'} src={this.props.user.data.user_pic ? this.props.user.data.user_pic : '../../assets/img/avatars/is.png'} className="img-avatar" alt={this.props.user.data.email}/>
+
     }
   }
 
@@ -54,7 +55,7 @@ class Avatar extends React.Component {
     this.init();
     return(
       <Nav className="ml-auto" navbar>
-        <AppHeaderDropdown direction="down">
+        <UncontrolledDropdown direction="down">
           <DropdownToggle nav>
             {userpic}
           </DropdownToggle>
@@ -64,7 +65,7 @@ class Avatar extends React.Component {
             <DropdownItem><i className="fa fa-usd"/> <Link to="/payment" >Payment</Link></DropdownItem>
             <DropdownItem onClick={ this.onLogout }><i className="fa fa-sign-out"/> <span className="looksLink" >Logout</span></DropdownItem>
           </DropdownMenu>
-        </AppHeaderDropdown>
+        </UncontrolledDropdown>
       </Nav>
     )
   }

@@ -10,7 +10,7 @@ WORKDIR /app/web
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-COPY package.json ./
+COPY ["package.json", "package-lock.json*", "./"]
 
 RUN npm install --silent --loglevel verbose
 
@@ -18,11 +18,10 @@ RUN npm install --silent --loglevel verbose
 # comment it if in dev mode
 RUN npm run build
 
-
 # If you are building your code for production
 RUN npm ci --only=production
 
 EXPOSE 5000
 
-CMD npm run deploy
+#CMD npm run deploy
 # CMD npm start
