@@ -21,7 +21,7 @@ services:
       - mongo
   web:
     container_name: ms_web
-    command: npm run deploy;
+    command: npm run deploy
     volumes:
       - ./web:/app/web
     environment:
