@@ -14,27 +14,15 @@ COPY package.json ./
 
 RUN npm install --silent --loglevel verbose
 
-RUN if [ "$NODE_ENV" = "development" ]; \
-	then npm start;  \
-	else npm run build; \
-	fi
-
-RUN if [ "$NODE_ENV" = "production" ]; \
-  then npm ci --only=production; \
-  fi
-
-RUN if [ "$NODE_ENV" = "production" ]; \
-  then npm run deploy; \
-  fi
 
 # comment it if in dev mode
-#RUN npm run build
+RUN npm run build
+
 
 # If you are building your code for production
-#RUN npm ci --only=production
-
+RUN npm ci --only=production
 
 EXPOSE 5000
 
-#CMD npm run deploy
-#CMD npm start
+CMD npm run deploy
+# CMD npm start
