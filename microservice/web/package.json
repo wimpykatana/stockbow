@@ -20,7 +20,7 @@
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
-    "core-js": "^2.6.5",
+    "core-js": "^2.6.8",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "express": "^4.17.1",
