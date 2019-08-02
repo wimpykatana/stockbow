@@ -28,7 +28,7 @@ class GoLogin extends React.Component{
   responseGoogle(response){
 
     if(response){
-      console.log(response);
+      // console.log(response);
       let name = response.profileObj.name;
       let provider = "google";
       let email = response.profileObj.email;
@@ -36,7 +36,7 @@ class GoLogin extends React.Component{
       let provider_pic = response.profileObj.imageUrl;
       let token = response.accessToken;
 
-      // this.props.dispatch(onLogin(name,email,token,provider_pic,provider_id,provider));
+      this.props.dispatch(onLogin(name,email,token,provider_pic,provider_id,provider));
 
     }
 
