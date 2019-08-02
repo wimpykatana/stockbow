@@ -14,11 +14,9 @@ services:
   user:
     container_name: ms_user
     build: ./user
-    command: >
-      /bin/bash -c "
-        sleep 10;
-        nodemon ./bin/www;
-      "
+    command: nodemon ./bin/www;
+    link:
+      - mongo:mongo
     volumes:
       - ./user:/app/user
     ports:
