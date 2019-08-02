@@ -46,7 +46,7 @@ class GoLogin extends React.Component{
 
     return(
       <GoogleLogin
-        clientId="801211553413-evitfvmqav482l62aonj281pt6gvsf1v.apps.googleusercontent.com"
+        clientId="801211553413-lf04j4455ds8ogmvb450pd9irsou47pd.apps.googleusercontent.com"
         render={
           renderProps => (
             <Button className="btn-danger mb-1" onClick={renderProps.onClick} block><span>google</span></Button>
