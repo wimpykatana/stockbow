@@ -11,7 +11,10 @@ services:
   user:
     container_name: ms_user
     build: ./user
-    command: nodemon ./bin/www;
+    command: >
+      /bin/bash -c "
+        sleep 10;
+        nodemon ./bin/www;
     volumes:
       - ./user:/app/user
     ports:
