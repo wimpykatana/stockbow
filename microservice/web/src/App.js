@@ -19,7 +19,6 @@ const Page500 = React.lazy(() => import('./views/Pages/Page500'));
 
 const isAuthenticated = () => {
   //write your condition here
-
   let user = getFromStorage("USER");
   return !!user;
 

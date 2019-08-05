@@ -54,13 +54,14 @@ class Avatar extends React.Component {
 
     this.init();
     return(
-      <Nav className="ml-auto" navbar>
+      <Nav  className="ml-auto" navbar>
         <UncontrolledDropdown direction="down">
           <DropdownToggle nav>
             {userpic}
           </DropdownToggle>
           <DropdownMenu right style={{ right: 'auto' }}>
             <DropdownItem header tag="div" className="text-center"><strong>Settings</strong></DropdownItem>
+            <DropdownItem><i className="nav-icon icon-speedometer"/> <Link to="/dashboard" >Dashboard</Link></DropdownItem>
             <DropdownItem><i className="fa fa-user"/> <Link to="/profile" >Profile</Link></DropdownItem>
             <DropdownItem><i className="fa fa-usd"/> <Link to="/payment" >Payment</Link></DropdownItem>
             <DropdownItem onClick={ this.onLogout }><i className="fa fa-sign-out"/> <span className="looksLink" >Logout</span></DropdownItem>

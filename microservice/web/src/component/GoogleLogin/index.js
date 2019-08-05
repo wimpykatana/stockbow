@@ -4,6 +4,7 @@ import {Button} from "reactstrap";
 import { connect } from "react-redux";
 import { onLogin } from '../../_dux/action/userAction';
 import { setInStorage } from  '../../_libs/storage';
+import config from '../../config/config';
 
 class GoLogin extends React.Component{
 
@@ -43,10 +44,10 @@ class GoLogin extends React.Component{
   }
 
   render() {
-
+    // console.log(config.gkey);
     return(
       <GoogleLogin
-        clientId="801211553413-lf04j4455ds8ogmvb450pd9irsou47pd.apps.googleusercontent.com"
+        clientId={config.gkey}
         render={
           renderProps => (
             <Button className="btn-danger mb-1" onClick={renderProps.onClick} block><span>google</span></Button>
