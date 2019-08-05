@@ -5,6 +5,8 @@ services:
     container_name: ms_mongo
     image: mongo
     command: mongod --port 27017 --bind_ip_all
+    environment:
+      MONGO_INITDB_DATABASE = invesgram
     ports:
       - "27017:27017"
     volumes:
