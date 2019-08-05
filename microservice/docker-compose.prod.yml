@@ -1,26 +1,16 @@
 version: '3'
 
 services:
-  mongo:
-    container_name: ms_mongo
-    image: mongo
-    environment:
-      - MONGO_INITDB_DATABASE=invesgram
+  nginx:
+    container_name: ms_nginx
+    image: nginx:latest
     ports:
-      - "27017:27017"
+      - "80:80"
     volumes:
-      - "./mongo/db:/data/db"
-  user:
-    container_name: ms_user
-    build: ./user
-    links:
-      - mongo:mongo
-    volumes:
-      - ./user:/app/user
-    ports:
-      - "1337:1337"
+      - ./default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - mongo
+      - user
+      - web
   web:
     container_name: ms_web
     command: npm run deploy
@@ -32,13 +22,23 @@ services:
       - "5000:5000"
     depends_on:
       - user
-  nginx:
-    container_name: ms_nginx
-    image: nginx:latest
-    ports:
-      - "80:80"
+  user:
+    container_name: ms_user
+    build: ./user
+    links:
+      - mongo:mongo
     volumes:
-      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./user:/app/user
+    ports:
+      - "1337:1337"
     depends_on:
-      - user
-      - web
+      - mongo
+  mongo:
+    container_name: ms_mongo
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=invesgram
+    ports:
+      - "27017:27017"
+    volumes:
+      - "./mongo/db:/data/db"

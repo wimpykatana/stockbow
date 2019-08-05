@@ -1,14 +1,25 @@
 version: '3'
 
 services:
-  mongo:
-    container_name: ms_mongo
-    image: mongo
-    command: mongod --port 27017 --bind_ip_all
+  nginx:
+    container_name: ms_nginx
+    image: nginx:latest
     ports:
-      - "27017:27017"
+      - "80:80"
     volumes:
-      - "./mongo/db:/data/db"
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - user
+      - web
+    networks:
+      - invesgramnet
+  web:
+    container_name: ms_web
+    build: ./web
+    ports:
+      - "5000:5000"
+    depends_on:
+      - user
     networks:
       - invesgramnet
   user:
@@ -25,25 +36,14 @@ services:
       - mongo
     networks:
       - invesgramnet
-  web:
-    container_name: ms_web
-    build: ./web
+  mongo:
+    container_name: ms_mongo
+    image: mongo
+    command: mongod --port 27017 --bind_ip_all
     ports:
-      - "5000:5000"
-    depends_on:
-      - user
-    networks:
-      - invesgramnet
-  nginx:
-    container_name: ms_nginx
-    image: nginx:latest
-    ports:
-      - "80:80"
+      - "27017:27017"
     volumes:
-      - ./default.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - user
-      - web
+      - "./mongo/db:/data/db"
     networks:
       - invesgramnet
 networks:
