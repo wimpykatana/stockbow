@@ -4,6 +4,8 @@ services:
   mongo:
     container_name: ms_mongo
     image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=invesgram
     ports:
       - "27017:27017"
     volumes:
