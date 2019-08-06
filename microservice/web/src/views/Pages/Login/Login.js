@@ -3,6 +3,7 @@ import { Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
 import GoLogin from '../../../component/GoogleLogin';
 import config from '../../../config/config';
 import ReactGA from 'react-ga';
+import "./login.css";
 
 ReactGA.initialize(config.trackerId);
 ReactGA.pageview(window.location.pathname);
@@ -11,7 +12,7 @@ ReactGA.pageview(window.location.pathname);
 class Login extends Component {
   render() {
     return (
-      <div className="app flex-row align-items-center">
+      <div className="app flex-row align-items-center login-holder">
         <Container>
           <Row className="justify-content-center">
             <Col md="9" lg="7" xl="6">
@@ -19,12 +20,11 @@ class Login extends Component {
                 <CardBody className="p-4">
                   <div className="text-center">
                     <h1>invesgram</h1>
-                    <p className="text-muted">Login with your google account</p>
+                    <h5 className="text-muted">Your stock market journey begins here.</h5>
                   </div>
                 </CardBody>
                 <CardFooter className="p-4">
                   <Row>
-
                     <Col xs="12" sm="12">
                       <GoLogin />
                     </Col>

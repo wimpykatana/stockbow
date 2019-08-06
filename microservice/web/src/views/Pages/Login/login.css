@@ -1,0 +1,6 @@
+.login-holder{
+  background-color: #0c0e10;
+  background-image: url("/assets/img/loginbg.jpg");
+  background-blend-mode: overlay;
+  background-size: cover;
+}
