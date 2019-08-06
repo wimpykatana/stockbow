@@ -1,5 +1,5 @@
 import React from 'react';
-import config from '../../config/config.json';
+import config from '../../../config/config.json';
 import ReactGA from 'react-ga';
 
 ReactGA.initialize(config.trackerId);

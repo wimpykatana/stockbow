@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Card, CardBody, CardHeader, Col, Row, Table} from "reactstrap";
-import config from '../../config/config.json';
+import config from '../../../config/config.json';
 import ReactGA from 'react-ga';
 
 ReactGA.initialize(config.trackerId);

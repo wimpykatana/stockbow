@@ -23,13 +23,13 @@ import {
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 
-import config from '../../config/config';
+import config from '../../../config/config';
 import ReactGA from 'react-ga';
 
 ReactGA.initialize(config.trackerId);
 ReactGA.pageview(window.location.pathname);
 
-const Widget03 = lazy(() => import('../../views/Widgets/Widget03'));
+const Widget03 = lazy(() => import('../../Widgets/Widget03'));
 
 const brandPrimary = getStyle('--primary')
 const brandSuccess = getStyle('--success')
