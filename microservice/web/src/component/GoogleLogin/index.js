@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { onLogin } from '../../_dux/action/userAction';
 import { setInStorage } from  '../../_libs/storage';
 import config from '../../config/config';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize(config.trackerId);
 
 class GoLogin extends React.Component{
 
@@ -19,7 +22,6 @@ class GoLogin extends React.Component{
   componentWillReceiveProps(){
 
     if(this.props.user.data){
-
       setInStorage("USER", this.props.user.data);
       window.location.reload();
     }
@@ -36,6 +38,12 @@ class GoLogin extends React.Component{
       let provider_id = response.profileObj.googleId;
       let provider_pic = response.profileObj.imageUrl;
       let token = response.accessToken;
+
+      ReactGA.event({
+        category: "USER_ACTION",
+        action: "LOGIN",
+        label: "LOGIN_WITH_GOOGLE",
+      });
 
       this.props.dispatch(onLogin(name,email,token,provider_pic,provider_id,provider));
 

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
 import GoLogin from '../../../component/GoogleLogin';
+import config from '../../../config/config';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize(config.trackerId);
+ReactGA.pageview(window.location.pathname);
 
 
 class Login extends Component {

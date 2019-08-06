@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Card, CardBody, CardHeader, Col, Row, Table} from "reactstrap";
+import config from '../../config/config.json';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize(config.trackerId);
+ReactGA.pageview(window.location.pathname);
 
 let fullname;
 let email;
@@ -47,25 +52,21 @@ class Profile extends React.Component {
                       <td>:</td>
                       <td>{email}</td>
                     </tr>
-
                     <tr>
                       <td>about</td>
                       <td>:</td>
                       <td>{aboutUser}</td>
                     </tr>
-
                     <tr>
                       <td>date of birth</td>
                       <td>:</td>
                       <td>{dob}</td>
                     </tr>
-
                     <tr>
                       <td>phone number</td>
                       <td>:</td>
                       <td>{phoneNumber}</td>
                     </tr>
-
                     <tr>
                       <td>end of subscribe</td>
                       <td>:</td>
