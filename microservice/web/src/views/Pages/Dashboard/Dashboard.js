@@ -10,7 +10,7 @@ import {
   Row,
 } from 'reactstrap';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
-import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
+import { getStyle } from '@coreui/coreui/dist/js/coreui-utilities';
 
 import config from '../../../config/config';
 import ReactGA from 'react-ga';
@@ -20,14 +20,7 @@ ReactGA.pageview(window.location.pathname);
 
 const brandInfo = getStyle('--info');
 
-// Main Chart
-
-//Random Numbers
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-var elements = 29;
+// IHSG Chart
 var data1 = [];
 
 
@@ -37,9 +30,11 @@ let mainChart = {
     datasets: [
       {
         label: 'IHSG',
-        backgroundColor: hexToRgba(brandInfo, 10),
+        backgroundColor: '#fff',
+        fill: false,
         borderColor: brandInfo,
         pointHoverBackgroundColor: '#fff',
+        pointBackgroundColor: brandInfo,
         borderWidth: 2,
         data: data1,
       },
@@ -85,7 +80,7 @@ const mainChartOpts = {
   },
   elements: {
     point: {
-      radius: 0,
+      radius: 3,
       hitRadius: 10,
       hoverRadius: 4,
       hoverBorderWidth: 3,
@@ -145,16 +140,12 @@ class Dashboard extends Component {
       let arr = Object.entries(obj);
       let newarr = arr.slice(0,30).reverse();
 
+      // eslint-disable-next-line array-callback-return
       newarr.map(x => {
         mainChart.labels.push(x[0]);
         data1.push(x[1]["5. adjusted close"])
       });
 
-      // for (var i = 0; i <= elements; i++) {
-      //   data1.push(random(50, 200));
-      // }
-
-      console.log(mainChart);
     }
   }
 
