@@ -39,6 +39,7 @@ const User = React.lazy(() => import('./views/Users/User'));
 
 const Payment = React.lazy(() => import('./views/Pages/Payment'));
 const Profile = React.lazy(() => import('./views/Pages/Profile'));
+const News = React.lazy(() => import('./views/Pages/News'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -46,6 +47,7 @@ const routes = [
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/payment', name: 'Payment', component: Payment },
   { path: '/profile', name: 'Profile', component: Profile },
+  { path: '/news', name: 'News', component: News },
 
   { path: '/theme', exact: true, name: 'Theme', component: Colors },
   { path: '/theme/colors', name: 'Colors', component: Colors },

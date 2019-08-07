@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
-import GoLogin from '../../../component/GoogleLogin';
+import GLogin from '../../../component/GoogleLogin';
 import config from '../../../config/config';
 import ReactGA from 'react-ga';
 import "./login.css";
@@ -25,9 +25,11 @@ class Login extends Component {
                 </CardBody>
                 <CardFooter className="p-4">
                   <Row>
+
                     <Col xs="12" sm="12">
-                      <GoLogin />
+                      <GLogin />
                     </Col>
+
                     {/*<Col xs="12" sm="6">*/}
                     {/*  <Button className="btn-facebook mb-1" block><span>facebook</span></Button>*/}
                     {/*</Col>*/}

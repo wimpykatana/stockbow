@@ -20,6 +20,7 @@ class DefaultHeader extends Component {
     const { children, ...attributes } = this.props;
     return (
       <React.Fragment>
+
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
           full={{ src: logo, width: 156, height: 80, alt: 'Invesgram Logo' }}

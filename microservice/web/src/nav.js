@@ -3,7 +3,13 @@ export default {
     {
       name: 'Dashboard',
       url: '/dashboard',
-      icon: 'icon-speedometer',
+      icon: 'icon-notebook',
+    },
+
+    {
+      name: 'News',
+      url: '/news',
+      icon: 'icon-book-open',
     },
 
 

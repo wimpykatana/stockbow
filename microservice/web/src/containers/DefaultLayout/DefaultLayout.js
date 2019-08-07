@@ -46,7 +46,7 @@ class DefaultLayout extends Component {
             <AppSidebarHeader />
             <AppSidebarForm />
             <Suspense>
-            <AppSidebarNav navConfig={navigation} {...this.props} router={router}/>
+              <AppSidebarNav navConfig={navigation} {...this.props} router={router}/>
             </Suspense>
             <AppSidebarFooter />
           </AppSidebar>
@@ -78,11 +78,6 @@ class DefaultLayout extends Component {
             </Suspense>
           </AppAside>
         </div>
-        <AppFooter>
-          <Suspense fallback={this.loading()}>
-            <DefaultFooter />
-          </Suspense>
-        </AppFooter>
       </div>
     );
   }

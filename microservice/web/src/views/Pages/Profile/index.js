@@ -37,9 +37,9 @@ class Profile extends React.Component {
   render() {
     this.init();
     return(
-      <div className="animated fadeIn">
-        <Row>
-          <Col lg={12}>
+      <div className="animated fadeIn ">
+        <Row className="no-gutters">
+          <Col sm={12} md={{size: 10,offset: 1}}>
             <Card>
               <CardHeader>
                 <strong>{fullname}</strong>
