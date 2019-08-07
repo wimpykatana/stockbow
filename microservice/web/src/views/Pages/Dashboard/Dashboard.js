@@ -22,6 +22,7 @@ const brandInfo = getStyle('--info');
 
 // IHSG Chart
 var data1 = [];
+let chart;
 
 
 let mainChart = {
@@ -74,7 +75,6 @@ const mainChartOpts = {
           beginAtZero: false,
           maxTicksLimit: 5,
           stepSize: Math.ceil(250 / 5),
-          max: 6500,
         },
       }],
   },
@@ -146,12 +146,11 @@ class Dashboard extends Component {
         data1.push(x[1]["5. adjusted close"])
       });
 
+      chart = <Line data={mainChart} options={mainChartOpts} height={500} onChange={this.changeHandler} redraw />;
     }
   }
 
-
   init(){
-
 
   }
 
@@ -162,7 +161,7 @@ class Dashboard extends Component {
     return (
       <div className="animated fadeIn">
         <Row>
-          <Col>
+          <Col lg="8">
             <Card>
               <CardBody>
                 <Row>
@@ -172,9 +171,7 @@ class Dashboard extends Component {
 
                 </Row>
                 <div className="chart-wrapper" style={{ height: 500 + 'px', marginTop: 40 + 'px' }}>
-                  <Line data={mainChart} options={mainChartOpts} height={300} onChange={this.changeHandler} redraw />
-
-                  {/*{chart}*/}
+                  {chart}
                 </div>
               </CardBody>
             </Card>
