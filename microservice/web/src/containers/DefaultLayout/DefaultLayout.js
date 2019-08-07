@@ -5,7 +5,6 @@ import { Container } from 'reactstrap';
 
 import {
   AppAside,
-  AppFooter,
   AppHeader,
   AppSidebar,
   AppSidebarFooter,
@@ -21,7 +20,6 @@ import navigation from '../../nav';
 import routes from '../../routes';
 
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
-const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 
 class DefaultLayout extends Component {
@@ -51,7 +49,7 @@ class DefaultLayout extends Component {
             <AppSidebarFooter />
           </AppSidebar>
           <main className="main">
-            <AppBreadcrumb appRoutes={routes} router={router}/>
+            {/*<AppBreadcrumb appRoutes={routes} router={router}/>*/}
             <Container fluid>
               <Suspense fallback={this.loading()}>
                 <Switch>

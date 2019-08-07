@@ -1,16 +1,12 @@
 import React from 'react';
 import config from '../../../config/config.json';
 import {
-  Card,
-  CardBody,
-  CardHeader,
   Col,
   Input,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   Row,
-  Table
 } from "reactstrap";
 import ReactGA from 'react-ga';
 
