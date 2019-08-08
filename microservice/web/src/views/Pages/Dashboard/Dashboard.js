@@ -168,7 +168,6 @@ class Dashboard extends Component {
                   <Col sm="5">
                     <CardTitle className="mb-0">IHSG</CardTitle>
                   </Col>
-
                 </Row>
                 <div className="chart-wrapper" style={{ height: 500 + 'px', marginTop: 40 + 'px' }}>
                   {chart}
