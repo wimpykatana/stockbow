@@ -23,7 +23,7 @@ const brandInfo = getStyle('--info');
 // IHSG Chart
 var data1 = [];
 let chart;
-
+let loadingihsg;
 
 let mainChart = {
 
@@ -74,7 +74,7 @@ const mainChartOpts = {
         ticks: {
           beginAtZero: false,
           maxTicksLimit: 5,
-          stepSize: Math.ceil(250 / 5),
+          // stepSize: Math.ceil(250 / 5),
         },
       }],
   },
@@ -146,15 +146,20 @@ class Dashboard extends Component {
         data1.push(x[1]["5. adjusted close"])
       });
 
-      chart = <Line data={mainChart} options={mainChartOpts} height={500} onChange={this.changeHandler} redraw />;
+      chart = <Line data={mainChart} options={mainChartOpts} height={400} onChange={this.changeHandler} redraw />;
     }
   }
 
   init(){
-
+    if(this.props.jkse.data){
+      loadingihsg = "";
+    }
+    else {
+      loadingihsg = <div className="animated fadeIn pt-1 text-center">Loading...</div>;
+    }
   }
 
-  loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
+  loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>;
 
   render() {
     this.init();
@@ -166,10 +171,11 @@ class Dashboard extends Component {
               <CardBody>
                 <Row>
                   <Col sm="5">
-                    <CardTitle className="mb-0">IHSG</CardTitle>
+                    <CardTitle className="mb-0" style={{fontSize: '20px'}}>IHSG</CardTitle>
                   </Col>
                 </Row>
-                <div className="chart-wrapper" style={{ height: 500 + 'px', marginTop: 40 + 'px' }}>
+                <div className="chart-wrapper" style={{ height: 'auto', maxHeight: 400 + 'px', marginTop: 40 + 'px' }}>
+                  {loadingihsg}
                   {chart}
                 </div>
               </CardBody>

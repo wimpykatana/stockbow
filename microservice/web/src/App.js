@@ -6,7 +6,6 @@ import { getFromStorage } from  './_libs/storage';
 // import { renderRoutes } from 'react-router-config';
 import './App.scss';
 
-
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 // Containers
@@ -24,9 +23,6 @@ const isAuthenticated = () => {
 
 };
 
-
-
-
 const UnauthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     !isAuthenticated()
@@ -34,7 +30,6 @@ const UnauthenticatedRoute = ({ component: Component, ...rest }) => (
       : <Redirect to='/' />
   )} />
 );
-
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (

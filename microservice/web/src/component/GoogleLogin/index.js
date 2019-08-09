@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleLogin from 'react-google-login';
 import {Button} from "reactstrap";
 import { connect } from "react-redux";
-import { onLogin } from '../../_dux/action/userAction';
+import { onLogin } from '../../_dux/action/userAction'
 import { setInStorage } from  '../../_libs/storage';
 import config from '../../config/config';
 import ReactGA from 'react-ga';
