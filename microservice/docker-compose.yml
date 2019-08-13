@@ -12,8 +12,23 @@ services:
     depends_on:
       - user
       - web
+      - news
     networks:
       - invesgramnet
+  news:
+    container_name: ms_news
+    build: ./news
+    command: nodemon ./bin/www;
+    volumes:
+      - ./news:/app/news
+    ports:
+      - "1336:1336"
+    networks:
+      - invesgramnet
+    depends_on:
+      - mongo
+    links:
+      - mongo:mongo
   web:
     container_name: ms_web
     build: ./web

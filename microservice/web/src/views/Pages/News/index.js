@@ -1,7 +1,9 @@
 import React from 'react';
 import config from '../../../config/config.json';
+import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import { getNews } from "../../../_dux/action/newsAction";
+import "./news.css"
 import {
   Card,
   CardBody,
@@ -36,16 +38,28 @@ class News extends React.Component {
 
   init() {
     if(this.props.news){
-      // console.log(this.props.news.message);
+
       displayNews = this.props.news.message.map( (news) => {
+        let source = news.date.split(" yang lalu");
         return(
-          <div key={news.title}>
-            <div>{news.title}</div>
-            <div>{news.text}</div>
-            <div>{news.link}</div>
-            <div><img src={news.img} /></div>
-            <div>{news.date}</div>
-            <div>---------------------------------</div>
+          <div className="news-item" key={news.title}>
+
+            <div className='news-image float-left'>
+              <img src={news.img} width={"100px"} height={"100px"}/>
+            </div>
+
+            <div className='news-title'>
+              <a target='_blank' href={news.link}>{news.title}</a>
+            </div>
+
+            <div className="news-source">
+              {source[0]} yang lalu
+            </div>
+
+            <div className="news-desc">
+              {news.text}
+            </div>
+            <br />
           </div>
         )
 

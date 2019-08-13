@@ -1,0 +1,20 @@
+.news-image{
+  margin: 0 10px 10px 0;
+  height: 100%;
+}
+
+.news-title{
+  font-size: .9em;
+}
+
+.news-source {
+  font-size: .5em;
+}
+
+.news-desc{
+  font-size: .7em;
+}
+
+.news-item{
+  margin: 10px 0 5px;
+}
