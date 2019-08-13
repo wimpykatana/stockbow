@@ -20,7 +20,6 @@ ReactGA.pageview(window.location.pathname);
 
 let displayNews;
 
-
 class News extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +39,7 @@ class News extends React.Component {
     if(this.props.news){
 
       displayNews = this.props.news.message.map( (news) => {
-        let source = news.date.split(" yang lalu");
+        let source = news.date.split("yang lalu");
         return(
           <div className="news-item" key={news.title}>
 
